@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScholarAnnoSuite</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand">ScholarAnnoSuite Specification</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            </div>
+
+
+        </div>
+    </nav>
+
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <h3>Under construction...</h3>
+
+            <hr>
+
+            <h4>images.csv</h4>
+
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Definition</th>
+                        <th scope="col">Requirement</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>M_image_id</td>
+                        <td>The unique IDs of images in the dataset. | Img_index (default)</td>
+                        <td>Must have</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>M_image_name</td>
+                        <td>The name of the image.</td>
+                        <td>Must have</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>M_image_url</td>
+                        <td>The url link of the image.</td>
+                        <td>Must have</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>M_dispaly_order</td>
+                        <td>The order to show all images. | sort all images based on their appearance order at the
+                            dataset (default).</td>
+                        <td>Must have</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>O_caption_url</td>
+                        <td>The url link to the associated caption information of an image.</td>
+                        <td>Optional</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>O_paper_url</td>
+                        <td>The url link to the paper that contains the image.</td>
+                        <td>Optional</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">7</th>
+                        <td>O_year</td>
+                        <td>The year when the paper was published. (used for the query panel).</td>
+                        <td>Optional</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>label_schema.csv</h4>
+
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Definition</th>
+                        <th scope="col">Requirement</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>M_label_id</td>
+                        <td>The unique IDs of labels used for the annotation task. | lab_index (default)</td>
+                        <td>Must have</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>M_label_name</td>
+                        <td>The name of the label. The label names should be unique under each category.</td>
+                        <td>Must have</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>M_label_type</td>
+                        <td>The type of the label (1: checkbox, 2: radio, 3: free text, 4: rectangle boundingbox, 0:
+                            category label, -1: inactive label)</td>
+                        <td>Must have</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>M_label_parent</td>
+                        <td>The parent of the current label, used for the label hierarchy. (root | label_id).
+                            <br>
+                            The root category is not the real label but an indicator to donote a group of labels, which
+                            is similar to the name of a dropdown menu.
+                        </td>
+                        <td>Must have</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>M_label_abbr</td>
+                        <td>The abbreviation of the label. (used for icon generation and results export) </td>
+                        <td>Must have</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>O_label_required</td>
+                        <td>Only used for root label. If the system need to check whether users annotated any labels
+                            under this category. Value: 1 | 0 (default) </td>
+                        <td>Optional</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">7</th>
+                        <td>O_label_placeholder</td>
+                        <td>Only used for free-text labels. The placeholder for this label. | Empty string (default)
+                        </td>
+                        <td>Optional</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">8</th>
+                        <td>O_label_icon</td>
+                        <td>
+                            The icon url of the label. | Empty string (default)</td>
+                        <td>Optional</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">9</th>
+                        <td>O_label_bbox</td>
+                        <td>If this label will be used for localization tasks (bounding box annotation). Value: 1 | 0
+                            (default) </td>
+                        <td>Optional</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">10</th>
+                        <td>O_label_color</td>
+                        <td>The color used for the bbox button. (If the O_label_color is not provided, the system will
+                            generate colors automatically followed the methods in <a target="_blank"
+                                href="https://github.com/connorgr/colorgorical">[1]</a>
+                                <a href="https://github.com/taketwo/glasbey" target="_blank">[2]</a>)</td>
+                        <td>Optional</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>users.csv</h4>
+
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Definition</th>
+                        <th scope="col">Requirement</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>M_username</td>
+                        <td>The unique IDs of users. This ID is used for the login</td>
+                        <td>Must have</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>M_assignment_by_image_id</td>
+                        <td>The IDs of images that have been assigned to this user. (use '; ' to seperate multiple image_ids. e.x. Img_1; Img_2; Img_3…)
+                            <br>Each image can only be assigned to 1-2 users.</td>
+                        <td>Must have</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>O_user_color</td>
+                        <td>The color used to differenciate users. (HEX value is required)</td>
+                        <td>Optional</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+
+
+            <hr>
+
+            
+
+        </div>
+
+
+
+    </div>
+
+
+
+</body>
+
+</html>
